@@ -31,7 +31,8 @@ def setup_master_password():
 
 def verify_master_password():
     if not os.path.exists(AUTH_FILE):
-        return setup_master_password()
+        setup_master_password()
+    
 
     with open(AUTH_FILE, 'r') as f:
         data = json.load(f)
@@ -39,7 +40,7 @@ def verify_master_password():
     salt = bytes.fromhex(data['salt'])
     correct_hash = data['hash']
 
-    password = getpass.getpass("Enter Master Password: ")
+    password = getpass.getpass("Enter Master Password for Verification: ")
     if hash_password(password) == correct_hash:
         print("Master password verified.")
         return password, salt

@@ -1,0 +1,7 @@
+name: Password
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - cryptography
+prefix: /opt/miniconda3/envs/Password
